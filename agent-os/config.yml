@@ -1,0 +1,221 @@
+# Agent OS Configuration
+# Builder method pattern for AI agent orchestration
+
+version: "1.0"
+project_name: "Cookie Demo"
+
+# Agent Builder Configuration
+agents:
+  spec-initializer:
+    role: "Product Specification Initializer"
+    description: "Creates initial spec structure from requirements"
+    builder_methods:
+      - gather_requirements
+      - validate_inputs
+      - create_spec_structure
+      - initialize_documentation
+
+  spec-researcher:
+    role: "Technical Research Specialist"
+    description: "Researches technical solutions and patterns"
+    builder_methods:
+      - analyze_requirements
+      - research_solutions
+      - evaluate_options
+      - document_findings
+
+  spec-writer:
+    role: "Specification Writer"
+    description: "Writes comprehensive technical specifications"
+    builder_methods:
+      - draft_specification
+      - define_interfaces
+      - specify_contracts
+      - create_diagrams
+
+  spec-verifier:
+    role: "Specification Verifier"
+    description: "Verifies specs are complete and feasible"
+    builder_methods:
+      - validate_completeness
+      - check_feasibility
+      - verify_consistency
+      - generate_report
+
+  product-planner:
+    role: "Product Planning Coordinator"
+    description: "Plans product features and roadmap"
+    builder_methods:
+      - analyze_requirements
+      - prioritize_features
+      - create_roadmap
+      - allocate_resources
+
+  tasks-list-creator:
+    role: "Task Breakdown Specialist"
+    description: "Breaks specs into actionable tasks"
+    builder_methods:
+      - analyze_specification
+      - identify_dependencies
+      - create_task_groups
+      - assign_priorities
+
+  database-engineer:
+    role: "Database Schema Engineer"
+    description: "Designs and implements database schemas"
+    builder_methods:
+      - design_schema
+      - create_migrations
+      - optimize_queries
+      - validate_integrity
+
+  api-engineer:
+    role: "API Development Engineer"
+    description: "Builds RESTful APIs and endpoints"
+    builder_methods:
+      - design_endpoints
+      - implement_routes
+      - add_validation
+      - create_tests
+
+  ui-designer:
+    role: "UI/UX Designer"
+    description: "Designs user interfaces and experiences"
+    builder_methods:
+      - create_mockups
+      - design_components
+      - ensure_accessibility
+      - prototype_interactions
+
+  frontend-verifier:
+    role: "Frontend Quality Verifier"
+    description: "Verifies frontend implementation quality"
+    builder_methods:
+      - test_components
+      - verify_accessibility
+      - check_responsiveness
+      - validate_interactions
+
+  backend-verifier:
+    role: "Backend Quality Verifier"
+    description: "Verifies backend implementation quality"
+    builder_methods:
+      - test_endpoints
+      - verify_security
+      - check_performance
+      - validate_data_integrity
+
+  testing-engineer:
+    role: "Testing Automation Engineer"
+    description: "Creates and runs automated tests"
+    builder_methods:
+      - design_test_strategy
+      - implement_tests
+      - run_test_suites
+      - generate_coverage_reports
+
+  implementation-verifier:
+    role: "Implementation Quality Verifier"
+    description: "Verifies overall implementation meets specs"
+    builder_methods:
+      - verify_against_spec
+      - check_integration
+      - validate_deployment
+      - certify_completion
+
+# Workflow Stages
+workflows:
+  specification:
+    stages:
+      - name: "Initialize"
+        agent: "spec-initializer"
+        output: "spec-structure"
+
+      - name: "Research"
+        agent: "spec-researcher"
+        input: "spec-structure"
+        output: "research-findings"
+
+      - name: "Write"
+        agent: "spec-writer"
+        input: "research-findings"
+        output: "draft-spec"
+
+      - name: "Verify"
+        agent: "spec-verifier"
+        input: "draft-spec"
+        output: "verified-spec"
+
+  planning:
+    stages:
+      - name: "Plan Product"
+        agent: "product-planner"
+        input: "verified-spec"
+        output: "product-plan"
+
+      - name: "Create Tasks"
+        agent: "tasks-list-creator"
+        input: "product-plan"
+        output: "task-assignments"
+
+  implementation:
+    parallel_tracks:
+      database:
+        - agent: "database-engineer"
+          methods: ["design_schema", "create_migrations"]
+
+      backend:
+        - agent: "api-engineer"
+          methods: ["design_endpoints", "implement_routes"]
+
+      frontend:
+        - agent: "ui-designer"
+          methods: ["create_mockups", "design_components"]
+
+  verification:
+    stages:
+      - name: "Frontend Verification"
+        agent: "frontend-verifier"
+        parallel: true
+
+      - name: "Backend Verification"
+        agent: "backend-verifier"
+        parallel: true
+
+      - name: "Testing"
+        agent: "testing-engineer"
+
+      - name: "Final Verification"
+        agent: "implementation-verifier"
+
+# Standards and Guidelines
+standards:
+  global:
+    - coding-style
+    - commenting
+    - conventions
+    - error-handling
+    - tech-stack
+    - validation
+
+  backend:
+    - api
+    - migrations
+    - models
+    - queries
+
+  frontend:
+    - accessibility
+    - components
+    - css
+    - responsive
+
+  testing:
+    - test-writing
+
+# Output Directories
+output:
+  specs: "agent-os/specs"
+  implementations: "agent-os/implementations"
+  verifications: "agent-os/verifications"
+  standards: "agent-os/standards"
